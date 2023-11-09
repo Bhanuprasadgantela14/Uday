@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Animated Lines</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: rgb(229,231,235);
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        } 
+
+        .animated-line {
+            opacity: 0;
+            transform: translateY(20px);
+            position: absolute;
+        }
+
+     /** h1{
+          height: 100vh;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          animation: fadeInUp 3s infinite alternate;
+      }  **/
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        } 
+        
+    </style>
+</head>
+<body>
+    <div class="animated-line" id="line1"><h1>We have nothing to show</h1></div>
+    <div class="animated-line" id="line2"><h1>But, we have something to tell..</h1></div>
+    <div class="animated-line" id="line3"><h1>LIKE... <br> WE AS A TEAM <br> OUR BELIEVES ARE <br> ONLY IN</h1></div>
+    <div class="animated-line" id="line4"><h1>Mankind</h1></div>
+    <div class="animated-line" id="line5"><h1>Sustainability</h1></div>
+    <div class="animated-line" id="line6"><h1>& Technology</h1>
+    <h3>We serve for mankind</h3></div>
+
+    <script>
+        const lines = document.querySelectorAll('.animated-line');
+        let currentLineIndex = 0;
+
+        function showNextLine() {
+            if (currentLineIndex < lines.length) {
+                if (currentLineIndex > 0) {
+                    lines[currentLineIndex - 1].style.animation = 'fadeOut 1s ease-in-out forwards';
+                }
+                lines[currentLineIndex].style.animation = 'fadeInUp 1s ease-in-out forwards';
+                currentLineIndex++;
+            }
+        }
+
+        // Show the first line
+        showNextLine();
+
+        // Show the next line every 3 seconds
+        setInterval(showNextLine, 3000);
+    </script>
+</body>
+</html>
